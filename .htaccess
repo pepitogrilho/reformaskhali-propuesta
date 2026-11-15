@@ -1,0 +1,48 @@
+# Reformas Khali · configuración del servidor (Apache, Webempresa).
+# GitHub Pages no lee este archivo: solo sirve en la web publicada.
+
+Options -Indexes
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Direcciones de la web antigua (WordPress) que ya no existen → su sitio nuevo.
+  # «servicios», «proyectos-realizados», «contacto», «politica-privacidad» y «politica-de-cookies» se llaman igual.
+  RewriteRule ^quienes-somos/?$ /#nosotros [R=301,NE,L]
+  RewriteRule ^politica-de-privacidad/?$ /politica-privacidad/ [R=301,L]
+  RewriteRule ^feed/?$ / [R=301,L]
+  RewriteRule ^(category|tag|author)/ / [R=301,L]
+  RewriteRule ^[0-9]{4}/[0-9]{2}/ / [R=301,L]
+</IfModule>
+
+# No enseñar archivos internos si alguno se sube por error.
+<FilesMatch "\.(md|py|json|txt)$">
+  Require all denied
+</FilesMatch>
+<Files "robots.txt">
+  Require all granted
+</Files>
+<Files "LICENCIAS.txt">
+  Require all granted
+</Files>
+
+# Caché: fotos, fuentes, estilos y código se guardan un mes en el navegador.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+AddType font/woff2 .woff2
+AddType image/webp .webp

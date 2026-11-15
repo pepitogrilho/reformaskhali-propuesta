@@ -1,0 +1,7 @@
+Fuentes usadas en la web (alojadas aquí para no cargar nada de Google):
+
+- Cormorant Garamond · Christian Thalmann · SIL Open Font License 1.1
+- Figtree · Erik Kennedy · SIL Open Font License 1.1
+
+Licencia: https://openfontlicense.org
+Origen: Google Fonts (subconjunto latino, formato woff2).

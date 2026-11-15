@@ -6,6 +6,11 @@
    - Arcos de herradura, estrellas de ocho puntas, sebka y cenefas
    ========================================================= */
 
+/* Fuentes alojadas en la propia web (licencia SIL Open Font License). Sin Google Fonts: no se envía la IP del visitante a terceros. */
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 300 700; font-display: swap; src: url("../fonts/cormorant-garamond.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 300 700; font-display: swap; src: url("../fonts/cormorant-garamond-italic.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 300 900; font-display: swap; src: url("../fonts/figtree.woff2") format("woff2"); }
+
 :root {
   /* Paleta */
   --cal: #F7F1E6;          /* muro encalado */
@@ -422,6 +427,104 @@ p { margin: 0 0 1em; }
 .wa-flotante svg { width: 30px; height: 30px; }
 .barra-movil { display: none; }
 
+/* =========================================================
+   Páginas interiores
+   ========================================================= */
+.menu a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* Cabecera de página */
+.cabecera-pagina {
+  background: var(--lazo-azul), var(--piedra);
+  background-size: 64px 64px, auto;
+  padding: clamp(40px, 6vw, 72px) 0 clamp(32px, 5vw, 56px);
+}
+.cabecera-pagina h1 { font-size: clamp(2.3rem, 4.6vw, 3.6rem); }
+.cabecera-pagina p { font-size: 1.12rem; color: var(--tinta-2); max-width: 40em; margin: 0; }
+.migas { font-size: .88rem; margin-bottom: 14px; color: var(--tinta-2); }
+.migas a { color: var(--tinta-2); }
+
+/* Índice de la galería (enlaces a cada tipo) */
+.indice { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.indice a {
+  display: inline-block; padding: 8px 16px; border-radius: 999px;
+  background: #fff; border: 1px solid var(--piedra-2);
+  color: var(--tinta); text-decoration: none; font-weight: 600; font-size: .92rem;
+}
+.indice a:hover { border-color: var(--oro); }
+
+/* Galería de trabajos */
+.grupo { padding-top: 56px; }
+.grupo:first-child { padding-top: 0; }
+.grupo h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.grupo > p { color: var(--tinta-2); max-width: 44em; }
+.galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 22px; }
+.galeria figure { margin: 0; }
+.galeria a { display: block; border-radius: 10px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--piedra-2); }
+.galeria a:hover { box-shadow: 0 0 0 1px var(--oro), var(--sombra); }
+.galeria img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .4s ease; }
+.galeria a:hover img { transform: scale(1.03); }
+.galeria figcaption { font-size: .9rem; color: var(--tinta-2); padding: 8px 2px 0; line-height: 1.4; }
+
+/* Pares durante / después */
+.pares { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 22px; }
+.par { margin: 0; background: #fff; border: 1px solid var(--piedra-2); border-radius: var(--radio); padding: 14px; }
+.par .fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.par .foto { position: relative; }
+.par img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; }
+.par .rotulo {
+  position: absolute; top: 8px; left: 8px; padding: 3px 9px; border-radius: 999px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(18, 41, 67, .85); color: var(--cal);
+}
+.par figcaption { padding: 12px 4px 2px; font-size: .95rem; }
+.par figcaption strong { font-family: var(--f-titulo); font-size: 1.3rem; display: block; }
+
+/* Servicios en detalle */
+.servicio-detalle {
+  display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 5vw, 64px); align-items: center;
+  padding: clamp(40px, 6vw, 72px) 0; border-bottom: 1px solid var(--piedra-2);
+}
+.servicio-detalle:last-of-type { border-bottom: 0; }
+.servicio-detalle:nth-of-type(even) .texto { order: 2; }
+.servicio-detalle h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); }
+.servicio-detalle ul { padding-left: 1.2em; margin: 0 0 1.2em; }
+.servicio-detalle li { margin-bottom: .35em; }
+.servicio-detalle li::marker { color: var(--oro); }
+.servicio-detalle .foto img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: 50% 50% 10px 10px / 31% 31% 10px 10px;
+  border: 3px solid #fff; box-shadow: 0 0 0 1px var(--oro), var(--sombra);
+}
+
+/* Banda de llamada a la acción */
+.banda {
+  background: var(--lazo-oro), var(--azul);
+  background-size: 64px 64px, auto;
+  color: var(--cal); text-align: center; padding: clamp(48px, 7vw, 80px) 0;
+}
+.banda h2 { color: var(--cal); }
+.banda p { color: var(--piedra); font-size: 1.1rem; max-width: 36em; margin-inline: auto; }
+.banda .acciones { justify-content: center; margin-bottom: 0; }
+
+/* Textos legales */
+.texto-legal { max-width: 760px; }
+.texto-legal h2 { font-size: 1.9rem; margin-top: 1.6em; }
+.texto-legal h2:first-child { margin-top: 0; }
+.texto-legal ul { padding-left: 1.2em; }
+.texto-legal .datos { background: #fff; border: 1px solid var(--piedra-2); border-radius: var(--radio); padding: 18px 22px; list-style: none; }
+.texto-legal .actualizado { margin-top: 2em; font-size: .9rem; color: var(--tinta-2); }
+
+/* Formulario: campo trampa contra robots y avisos */
+.campo-trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.aviso-formulario { margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: .95rem; }
+.aviso-formulario.ok { background: #E8F4EC; border: 1px solid var(--verde); }
+.aviso-formulario.error { background: #FBEAE5; border: 1px solid var(--ladrillo); }
+.formulario > p { color: var(--tinta-2); }
+.info-datos { margin: 16px 0 0; font-size: .8rem; line-height: 1.5; color: var(--tinta-2); }
+.campo label small { font-weight: 400; color: var(--tinta-2); }
+.centro-boton { text-align: center; margin-top: 36px; }
+.contacto .zonas { margin-top: 28px; }
+
 /* ---------- Adaptación a pantallas ---------- */
 @media (max-width: 1024px) {
   .rejilla-servicios { grid-template-columns: repeat(2, 1fr); }
@@ -450,6 +553,11 @@ p { margin: 0 0 1em; }
   .rejilla-proyectos { grid-template-columns: repeat(2, 1fr); }
   .rejilla-opiniones { grid-template-columns: 1fr; }
   .cifras ul { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+  .galeria { grid-template-columns: repeat(3, 1fr); }
+  .pares { grid-template-columns: 1fr; }
+  .servicio-detalle { grid-template-columns: 1fr; }
+  .servicio-detalle:nth-of-type(even) .texto { order: 0; }
+  .servicio-detalle .foto { max-width: 420px; }
 }
 
 @media (max-width: 600px) {
@@ -463,6 +571,7 @@ p { margin: 0 0 1em; }
   .proyecto h3 { font-size: 1.15rem; }
   .campos { grid-template-columns: 1fr; }
   .pie-rejilla { grid-template-columns: 1fr; }
+  .galeria { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .wa-flotante { display: none; }
   .barra-movil {
     display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
